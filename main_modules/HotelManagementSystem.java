@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.a1.f22621632.Project_1632.main_modules;
 
-import bg.tu_varna.sit.a1.f22621632.Project_1632.modules.Room;
+import bg.tu_varna.sit.a1.f22621632.Project_1632.hotel_modules.Room;
 
 import java.util.ArrayList;
 import java.util.List;
