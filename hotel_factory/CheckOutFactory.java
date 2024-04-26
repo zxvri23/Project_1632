@@ -1,4 +1,10 @@
 package bg.tu_varna.sit.a1.f22621632.Project_1632.hotel_factory;
 
-public class CheckOutFactory {
+import bg.tu_varna.sit.a1.f22621632.Project_1632.contracts.Command;
+
+public class CheckOutFactory implements Command {
+    @Override
+    public void execute() {
+
+    }
 }

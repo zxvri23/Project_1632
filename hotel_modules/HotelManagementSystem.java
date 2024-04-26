@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.a1.f22621632.Project_1632.main_modules;
+package bg.tu_varna.sit.a1.f22621632.Project_1632.hotel_modules;
 
 import bg.tu_varna.sit.a1.f22621632.Project_1632.hotel_modules.Room;
 
