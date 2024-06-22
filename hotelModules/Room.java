@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.a1.f22621632.Project_1632.hotel_modules;
+package bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules;
 
 public class Room {
     private String roomNumber;

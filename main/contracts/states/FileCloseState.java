@@ -1,21 +1,21 @@
 package bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.states;
 
 import bg.tu_varna.sit.a1.f22621632.Project_1632.contracts.CommandSystemState;
-import bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.invoker.FileInvoker;
+import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
 
 import java.nio.file.Path;
 
 public class FileCloseState implements CommandSystemState {
 
     @Override
-    public void open(FileInvoker file, Path pathFile) {
+    public void open(FileContext file, Path pathFile) {
         FileOpenState fileOpenState=new FileOpenState();
         fileOpenState.open(file,pathFile);
         file.setState(fileOpenState);
     }
 
     @Override
-    public void close(FileInvoker file) {
+    public void close(FileContext invoker) {
         System.out.println("You need to open a file before using this command!");
     }
 
