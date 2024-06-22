@@ -10,14 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
+public class Application {
     public static void main(String[] args) {
-        String choice;
+        String command;
         FileContext fileContext=new FileContext();
         Scanner scanner=new Scanner(System.in);
+
         CommandsType commandsType= CommandsType.HELP;
-        String input="Test";
-        String filePathFolder="C:\\Users\\Lenovo\\IdeaProjects\\ООП 1 ПРОЕКТ\\src\\bg\\tu_varna\\sit\\a1\\f22621632\\Project_1632\\";
+        String text="something new";
+        String fileFolder="C:\\Users\\Lenovo\\IdeaProjects\\ООП 1 ПРОЕКТ\\src\\bg\\tu_varna\\sit\\a1\\f22621632\\Project_1632\\";
         Path defaultPath=Path.of("C:\\Users\\Lenovo\\IdeaProjects\\ООП 1 ПРОЕКТ\\src\\bg\\tu_varna\\sit\\a1\\f22621632\\Project_1632\\");
         Path filePath=defaultPath;
         Map<CommandsType, Command> menu=new HashMap<>();
@@ -27,9 +28,10 @@ public class Main {
             System.out.println("\nChoose a command from the once bellow: ");
             System.out.println("open file.txt, close, save, saveas file.txt, help, exit \n"+
                     "checkIn, availability, checkOut, report, find, find!, unavailability \n");
+            System.out.print("> ");
 
-            choice=scanner.nextLine().toUpperCase();
-            String[] inputs=choice.split(" ");
+            command=scanner.nextLine().toUpperCase();
+            String[] inputs=command.split(" ");
             try{
                 commandsType=CommandsType.valueOf(inputs[0]);
             }catch(Exception e){
@@ -37,15 +39,15 @@ public class Main {
                 continue;
             }
             if(inputs.length>1){
-                filePath=Path.of(filePathFolder+inputs[1]);
+                filePath=Path.of(fileFolder+inputs[1]);
             }else{
                 filePath=defaultPath;
             }
 
             menu.put(CommandsType.OPEN,new FileOpenCommand(fileContext,filePath));
             menu.put(CommandsType.CLOSE,new FileCloseCommand(fileContext));
-            menu.put(CommandsType.SAVE,new FileSaveCommand(fileContext,input));
-            menu.put(CommandsType.SAVEAS,new FileSaveAsCommand(fileContext,filePath,input));
+            menu.put(CommandsType.SAVE,new FileSaveCommand(fileContext,text));
+            menu.put(CommandsType.SAVEAS,new FileSaveAsCommand(fileContext,filePath,text));
             menu.put(CommandsType.HELP,new FileHelpCommand(fileContext));
             menu.put(CommandsType.EXIT,new FileExitCommand(fileContext));
 

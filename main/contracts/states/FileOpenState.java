@@ -17,7 +17,7 @@ public class FileOpenState implements CommandSystemState {
         try{
             FileWorker fileHelper=new FileWorker();
             if(Files.notExists(pathFile)){
-                fileHelper.createDirectory(pathFile);
+                fileHelper.createFile(pathFile);
             }
             this.file=pathFile;
             String fileRead=fileHelper.read(pathFile);
@@ -55,7 +55,7 @@ public class FileOpenState implements CommandSystemState {
         try{
             FileWorker fileWorker=new FileWorker();
             if(Files.notExists(pathFile)){
-                fileWorker.createDirectory(pathFile);
+                fileWorker.createFile(pathFile);
             }
             fileWorker.write(pathFile,input);
             System.out.println("Successfully saved another file");
