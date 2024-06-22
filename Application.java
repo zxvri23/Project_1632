@@ -3,6 +3,7 @@ package bg.tu_varna.sit.a1.f22621632.Project_1632;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.contracts.Command;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.enums.CommandsType;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.defaultCommands.*;
+import bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.hotelCommands.*;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
 
 import java.nio.file.Path;
@@ -26,9 +27,14 @@ public class Application {
 
         do{
             System.out.println("\nChoose a command from the once bellow: ");
-            System.out.println("open file.txt, close, save, saveas file.txt, help, exit \n"+
-                    "checkIn, availability, checkOut, report, find, find!, unavailability \n");
-            System.out.print("> ");
+            System.out.println("-> open file.txt" + "\n-> close" +
+                    "\n-> save" + "\n-> saveas file.txt" +
+                    "\n-> help" + "\n-> checkIn" +
+                    "\n-> checkOut" + "\n-> availability" +
+                    "\n-> report" + "\n-> find " +
+                    "\n-> find! " + "\n-> unavailability" +
+                    "\n-> exit\n");
+            System.out.print("Your choice -> ");
 
             command=scanner.nextLine().toUpperCase();
             String[] inputs=command.split(" ");
@@ -50,6 +56,15 @@ public class Application {
             menu.put(CommandsType.SAVEAS,new FileSaveAsCommand(fileContext,filePath,text));
             menu.put(CommandsType.HELP,new FileHelpCommand(fileContext));
             menu.put(CommandsType.EXIT,new FileExitCommand(fileContext));
+
+
+            menu.put(CommandsType.CHECKIN,new CheckInCommand());
+            menu.put(CommandsType.AVAILABILITY,new AvailabilityCommand());
+            menu.put(CommandsType.CHECKOUT,new CheckOutCommand());
+            menu.put(CommandsType.REPORT,new ReportCommand());
+            menu.put(CommandsType.FIND_ROOM,new FindRoomCommand());
+            menu.put(CommandsType.FIND_EMERGENCY_ROOM,new FindImportantRoomCommand());
+            menu.put(CommandsType.UNAVAILABLE,new UnavailabilityCommand());
 
 
 
