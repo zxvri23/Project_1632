@@ -6,6 +6,7 @@ import bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.invoker.FileInvo
 import java.nio.file.Path;
 
 public class FileOpenState implements CommandSystemState {
+
     @Override
     public void open(FileInvoker file, Path pathFile) {
 

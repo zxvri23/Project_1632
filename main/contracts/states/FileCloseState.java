@@ -32,11 +32,26 @@ public class FileCloseState implements CommandSystemState {
     @Override
     public void help() {
 
+        System.out.println("The following commands are supported: \n"+
+                "open <file>    opens file \n"+
+                "close          closes currently opened file \n"+
+                "save           saves the currently open file \n"+
+                "saveas <file>  saves the currently open file in <file> \n"+
+                "help           prints this information \n"+
+                "exit           exists the program \n"+
+
+                "checkIn        registers a room into the hotel system \n"+
+                "availability   prints a list with available rooms \n"+
+                "checkOut       unregisters a room from the hotel system \n"+
+                "report         prints a list of rooms that have been used a certain time \n"+
+                "find           finds a room with the needed beds \n" +
+                "find!          finds a room IMMEDIATELY for a VIP  guest \n"+
+                "unavailable    prints a taken room with a note \n");
     }
 
     @Override
     public void exit() {
-        System.out.println("Exit is successful!");
+        System.out.println("Exiting the program...");
     }
 
 
