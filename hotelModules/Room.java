@@ -35,9 +35,9 @@ public class Room {
         return roomNumber;
     }
 
-    public List<Booking> getBookingList() {
+    /*public List<Booking> getBookingList() {
         return bookingList;
-    }
+    }*/
 
 
     public boolean isAvailable(LocalDate from,LocalDate to){
@@ -70,14 +70,6 @@ public class Room {
 
     }
 
-    public boolean isRoomFree(LocalDate from,LocalDate to){
-        for(Booking booking:bookingList){
-            if(booking.getFromDate().isBefore(to) && booking.getToDate().isAfter(from)){
-                return false;
-            }
-        }
-        return true;
-    }
 
     public boolean tryToRearrange(LocalDate from,LocalDate to){
 

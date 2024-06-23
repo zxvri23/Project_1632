@@ -71,15 +71,4 @@ public class Booking {
         }
         return count;
     }
-
-    @Override
-    public String toString() {
-        return "Booking{" +
-                "roomNumber='" + roomNumber + '\'' +
-                ", fromDate='" + fromDate + '\'' +
-                ", toDate='" + toDate + '\'' +
-                ", note='" + note + '\'' +
-                ", guests=" + guests +
-                '}';
-    }
 }

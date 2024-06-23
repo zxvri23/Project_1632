@@ -9,8 +9,11 @@ public class Hotel {
     public Hotel(){
         addRoom(new Room(25,2));
         addRoom(new Room(44,4));
+        addRoom(new Room(55,6));
         addRoom(new Room(15,3));
-
+        addRoom(new Room(33,3));
+        addRoom(new Room(22,2));
+        addRoom(new Room(10,2));
     }
 
 

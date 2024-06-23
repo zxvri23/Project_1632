@@ -21,14 +21,6 @@ public class FileOpenState implements CommandSystemState {
     private Path file;
     private Hotel hotel;
 
-    public void setFile(Path file) {
-        this.file = file;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
-
     @Override
     public void open(FileContext file, Path pathFile) {
         try{
