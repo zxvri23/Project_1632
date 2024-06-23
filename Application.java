@@ -9,15 +9,13 @@ import bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.states.FileClose
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
 
 import java.nio.file.Path;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        String command,fromDate,toDate,note;
-        int room;
+        String command;
 
         FileContext fileContext=new FileContext();
         Scanner scanner=new Scanner(System.in);
@@ -29,10 +27,8 @@ public class Application {
         Path filePath=defaultPath;
         Map<CommandsType, Command> menu=new HashMap<>();
 
-
         fileContext.setState(new FileCloseState());
-
-
+        
         do{
             System.out.println("\nChoose a command from the once bellow: ");
             System.out.println("-> open file.txt" + "\n-> close" +
@@ -43,7 +39,6 @@ public class Application {
                     "\n-> find important " + "\n-> unavailability" +
                     "\n-> exit\n");
             System.out.print(" g> ");
-
             command=scanner.nextLine().toUpperCase();
             String[] inputs=command.split(" ");
             try{
