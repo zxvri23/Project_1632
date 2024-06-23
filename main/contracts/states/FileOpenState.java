@@ -91,7 +91,7 @@ public class FileOpenState implements CommandSystemState {
 
     @Override
     public void checkIn() {
-
+        System.out.println("tYPE IN UR ROOM: ");
     }
 
     @Override

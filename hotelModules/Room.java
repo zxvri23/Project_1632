@@ -44,8 +44,5 @@ public class Room {
                 '}';
     }
 
-    public void checkInRoom(){
-
-    }
 }
 
