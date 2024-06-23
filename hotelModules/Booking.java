@@ -41,6 +41,37 @@ public class Booking {
         return (this.fromDate.isBefore(to) && from.isBefore(this.toDate));
     }
 
+    public int getDaysPeriod(LocalDate from,LocalDate to){
+        LocalDate maxStart;
+        LocalDate maxEnd;
+        int count=0;
+
+
+        if(fromDate.isAfter(from)){
+            maxStart=fromDate;
+        }else{
+            maxStart=from;
+        }
+
+        if(toDate.isBefore(to)){
+            maxEnd=toDate;
+        }else{
+            maxEnd=to;
+        }
+
+
+        if(maxStart.isAfter(maxEnd)){
+            return 0;
+        }
+
+        LocalDate currentDay=maxStart;
+        while(!currentDay.isAfter(maxEnd)){
+            count++;
+            currentDay=currentDay.plusDays(1);
+        }
+        return count;
+    }
+
     @Override
     public String toString() {
         return "Booking{" +

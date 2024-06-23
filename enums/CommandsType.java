@@ -13,7 +13,7 @@ public enum CommandsType {
     AVAILABILITY,
     CHECKOUT,
     REPORT,
-    FIND_ROOM,
-    FIND_EMERGENCY_ROOM,
+    FIND,
+    FINDIMPORTANT,
     UNAVAILABLE
 }

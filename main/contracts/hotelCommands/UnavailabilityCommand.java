@@ -8,8 +8,9 @@ public class UnavailabilityCommand implements Command {
 
 
 
+
     @Override
     public void execute() {
-        this.context.getState().unavailability();
+        //this.context.getState().unavailability();
     }
 }

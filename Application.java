@@ -39,8 +39,8 @@ public class Application {
                     "\n-> save" + "\n-> saveas file.txt" +
                     "\n-> help" + "\n-> checkIn" +
                     "\n-> checkOut" + "\n-> availability" +
-                    "\n-> report" + "\n-> find " +
-                    "\n-> find! " + "\n-> unavailability" +
+                    "\n-> report" + "\n-> find" +
+                    "\n-> find important " + "\n-> unavailability" +
                     "\n-> exit\n");
             System.out.print("Your choice -> ");
 
@@ -58,10 +58,10 @@ public class Application {
                 filePath=defaultPath;
             }
 
-            LocalDate date=null;
+            /*LocalDate date=null;
             if(inputs.length>1){
                 date=LocalDate.parse(inputs[1]);
-            }
+            }*/
 
 
 
@@ -75,11 +75,11 @@ public class Application {
 
 
             menu.put(CommandsType.CHECKIN,new CheckInCommand(fileContext,scanner));
-            menu.put(CommandsType.AVAILABILITY,new AvailabilityCommand(fileContext,date));
+            menu.put(CommandsType.AVAILABILITY,new AvailabilityCommand(fileContext,null));
             menu.put(CommandsType.CHECKOUT,new CheckOutCommand(fileContext,scanner));
-            menu.put(CommandsType.REPORT,new ReportCommand());
-            menu.put(CommandsType.FIND_ROOM,new FindRoomCommand());
-            menu.put(CommandsType.FIND_EMERGENCY_ROOM,new FindImportantRoomCommand());
+            menu.put(CommandsType.REPORT,new ReportCommand(fileContext,scanner));
+            menu.put(CommandsType.FIND,new FindRoomCommand(fileContext,scanner));
+            menu.put(CommandsType.FINDIMPORTANT,new FindImportantRoomCommand());
             menu.put(CommandsType.UNAVAILABLE,new UnavailabilityCommand());
 
 

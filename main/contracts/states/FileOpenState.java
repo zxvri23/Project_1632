@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.states;
 
 import bg.tu_varna.sit.a1.f22621632.Project_1632.contracts.CommandSystemState;
-import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Booking;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Hotel;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Room;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
@@ -13,11 +12,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 
 public class FileOpenState implements CommandSystemState {
     private Path file;
     private Hotel hotel;
+
+    public void setFile(Path file) {
+        this.file = file;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
 
     @Override
     public void open(FileContext file, Path pathFile) {
@@ -123,6 +131,7 @@ public class FileOpenState implements CommandSystemState {
         }
 
         newRoom.book(room,fromDate,toDate,note,guests);
+        newRoom.setOccupied(true);
         System.out.println("Successful check-in: \n"+
                 "checkin "+ room+" "+ fromDate+ " "+toDate+" "+note);
     }
@@ -150,7 +159,7 @@ public class FileOpenState implements CommandSystemState {
 
         newRoom.setOccupied(false);
         System.out.println("After checkout,room "+roomNumber+" is occupied: "+ newRoom.isOccupied());
-
+        newRoom.checkOut();
         System.out.println("Successful check out for room: "+roomNumber);
 
     }
@@ -186,7 +195,44 @@ public class FileOpenState implements CommandSystemState {
     }
 
     @Override
-    public void unavailability() {
+    public void unavailability(int roomNumber, LocalDate from, LocalDate to, String note) {
+        if(hotel==null || file==null){
+            System.out.println("Please open a file first!");
+            return;
+        }
+    }
+
+
+    @Override
+    public void find(int beds, LocalDate from, LocalDate to) {
+        if(hotel==null || file==null){
+            System.out.println("Please open a file first!");
+            return;
+        }
+
+        Room bestRoom=null;
+
+        for(Room room: hotel.getAllRooms()){
+            if(room.getBeds()>=beds && room.isAvailable(from,to)){
+                if(bestRoom==null || room.getBeds()<bestRoom.getBeds()){
+                    bestRoom=room;
+                }
+            }
+        }
+
+        if(bestRoom!=null){
+            System.out.println("Found room: "+ bestRoom.getRoomNumber()
+            +" with " + bestRoom.getBeds() + " beds available from " + from
+            +" to "+to);
+        }else{
+            System.out.println("No room available!");
+        }
+
+
+    }
+
+    @Override
+    public void findImportant(int beds, LocalDate from, LocalDate to) {
         if(hotel==null || file==null){
             System.out.println("Please open a file first!");
             return;
@@ -195,30 +241,19 @@ public class FileOpenState implements CommandSystemState {
     }
 
     @Override
-    public void find() {
+    public void report(LocalDate from,LocalDate to) {
         if(hotel==null || file==null){
             System.out.println("Please open a file first!");
             return;
         }
 
-
-    }
-
-    @Override
-    public void findImportant() {
-        if(hotel==null || file==null){
-            System.out.println("Please open a file first!");
-            return;
+        Map<Integer,Integer> report=hotel.generateReport(from,to);
+        if(report.isEmpty()){
+            System.out.println("No usage data available.");
         }
 
-
-    }
-
-    @Override
-    public void report() {
-        if(hotel==null || file==null){
-            System.out.println("Please open a file first!");
-            return;
+        for(Map.Entry<Integer,Integer> entry : report.entrySet()){
+            System.out.println("Room "+ entry.getKey() + " was used for: "+ entry.getValue()+ " days.");
         }
 
 

@@ -14,6 +14,6 @@ public class FindImportantRoomCommand implements Command {
 
     @Override
     public void execute() {
-        this.context.getState().findImportant();
+        //this.context.getState().findImportant();
     }
 }

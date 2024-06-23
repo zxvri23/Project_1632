@@ -56,5 +56,25 @@ public class Room {
         this.occupied=false;
         this.bookingList.clear();
     }
+
+    public int getUsedDates(LocalDate from,LocalDate to){
+        int count=0;
+        for(Booking booking:bookingList){
+            if(booking.overlaps(from,to)){
+                count+=booking.getDaysPeriod(from,to);
+            }
+        }
+        return count;
+
+    }
+
+    public boolean isRoomFree(LocalDate from,LocalDate to){
+        for(Booking booking:bookingList){
+            if(booking.getFromDate().isBefore(to) && booking.getToDate().isAfter(from)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
 

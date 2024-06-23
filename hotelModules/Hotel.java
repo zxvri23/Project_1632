@@ -1,10 +1,7 @@
 package bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Hotel {
     private Map<Integer,Room> rooms=new HashMap<>();
@@ -15,6 +12,7 @@ public class Hotel {
         addRoom(new Room(15,3));
 
     }
+
 
     public void addRoom(Room room){
         rooms.put(room.getRoomNumber(),room);
@@ -32,6 +30,21 @@ public class Hotel {
             }
         }
         return roomArrayList;
+    }
+
+    public Map<Integer,Integer> generateReport(LocalDate from,LocalDate to){
+        Map<Integer,Integer> report=new HashMap<>();
+        for(Room room: rooms.values()){
+            int daysUsed=room.getUsedDates(from,to);
+            if(daysUsed>0){
+                report.put(room.getRoomNumber(),daysUsed);
+            }
+        }
+        return report;
+    }
+
+    public List<Room> getAllRooms(){
+        return new ArrayList<>(rooms.values());
     }
 
 

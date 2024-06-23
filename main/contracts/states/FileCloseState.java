@@ -73,22 +73,22 @@ public class FileCloseState implements CommandSystemState {
     }
 
     @Override
-    public void unavailability() {
+    public void unavailability(int roomNumber, LocalDate from, LocalDate to, String note) {
         System.out.println("You need to open a file before using this command!");
     }
 
     @Override
-    public void find() {
+    public void find(int beds, LocalDate from, LocalDate to) {
         System.out.println("You need to open a file before using this command!");
     }
 
     @Override
-    public void findImportant() {
+    public void findImportant(int beds, LocalDate from, LocalDate to) {
         System.out.println("You need to open a file before using this command!");
     }
 
     @Override
-    public void report() {
+    public void report(LocalDate from,LocalDate to) {
         System.out.println("You need to open a file before using this command!");
     }
 }

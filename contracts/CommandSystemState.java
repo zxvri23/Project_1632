@@ -16,9 +16,9 @@ public interface CommandSystemState {
     void checkIn(int room, LocalDate fromDate, LocalDate toDate, String note, int guests);
     void checkOut(int roomNumber);
     void availability(LocalDate date);
-    void find();
-    void findImportant();
-    void report();
-    void unavailability();
+    void find(int beds,LocalDate from,LocalDate to);
+    void findImportant(int beds,LocalDate from,LocalDate to);
+    void report(LocalDate from,LocalDate to);
+    void unavailability(int roomNumber,LocalDate from,LocalDate to,String note);
 
 }
