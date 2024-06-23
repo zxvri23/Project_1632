@@ -7,6 +7,8 @@ public class AvailabilityCommand implements Command {
 
     private FileContext context;
 
+
+
     @Override
     public void execute() {
         this.context.getState().availability();

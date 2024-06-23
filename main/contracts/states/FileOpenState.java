@@ -1,13 +1,18 @@
 package bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.states;
 
 import bg.tu_varna.sit.a1.f22621632.Project_1632.contracts.CommandSystemState;
+import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Booking;
+import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Room;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileWorker;
 
+import java.awt.print.Book;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Map;
 
 public class FileOpenState implements CommandSystemState {
     private Path file;
@@ -90,8 +95,8 @@ public class FileOpenState implements CommandSystemState {
 
 
     @Override
-    public void checkIn() {
-        System.out.println("tYPE IN UR ROOM: ");
+    public void checkIn(int room, LocalDate fromDate, LocalDate toDate, String note, int guests) {
+
     }
 
     @Override

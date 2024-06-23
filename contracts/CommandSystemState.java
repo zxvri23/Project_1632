@@ -3,6 +3,7 @@ package bg.tu_varna.sit.a1.f22621632.Project_1632.contracts;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 
 public interface CommandSystemState {
     void open(FileContext file, Path pathFile);
@@ -12,7 +13,7 @@ public interface CommandSystemState {
     void help();
     void exit();
 
-    void checkIn();
+    void checkIn(int room, LocalDate fromDate, LocalDate toDate, String note, int guests);
     void checkOut();
     void availability();
     void find();

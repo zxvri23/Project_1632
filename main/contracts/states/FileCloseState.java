@@ -4,6 +4,7 @@ import bg.tu_varna.sit.a1.f22621632.Project_1632.contracts.CommandSystemState;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 
 public class FileCloseState implements CommandSystemState {
 
@@ -56,7 +57,7 @@ public class FileCloseState implements CommandSystemState {
 
 
     @Override
-    public void checkIn() {
+    public void checkIn(int room, LocalDate fromDate, LocalDate toDate, String note, int guests) {
         System.out.println("You need to open a file before using this command!");
     }
 

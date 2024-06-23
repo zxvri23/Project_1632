@@ -1,48 +1,47 @@
 package bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Room {
-    private String roomNumber;
+    private int roomNumber;
     private int beds;
-    private boolean isAvailable;
-    private int guests;
-    private String note;
+    List<Booking> bookingList=new ArrayList<>();
 
-    public Room(String roomNumber, int beds, boolean isAvailable) {
-        this.roomNumber = roomNumber;
+    public Room(int roomNumber,int beds) {
+        this.roomNumber=roomNumber;
         this.beds = beds;
-        this.isAvailable = true;
-    }
 
-    public String getRoomNumber() {
-        return roomNumber;
     }
 
     public int getBeds() {
         return beds;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public int getRoomNumber() {
+        return roomNumber;
     }
 
-    public int getGuests() {
-        return guests;
+    public List<Booking> getBookingList() {
+        return bookingList;
     }
 
-    public String getNote() {
-        return note;
+    public void addBooking(Booking booking){
+        bookingList.add(booking);
     }
+
+    public void removeBooking(Booking booking){
+        bookingList.remove(booking);
+    }
+
 
     @Override
     public String toString() {
         return "Room{" +
-                "roomNumber='" + roomNumber + '\'' +
-                ", beds=" + beds +
-                ", isAvailable=" + isAvailable +
-                ", guests=" + guests +
-                ", note='" + note + '\'' +
+                "beds=" + beds +
+                ", bookingList=" + bookingList +
                 '}';
     }
-
 }
 
