@@ -42,7 +42,7 @@ public class Application {
                     "\n-> report" + "\n-> find" +
                     "\n-> find important " + "\n-> unavailability" +
                     "\n-> exit\n");
-            System.out.print("Your choice -> ");
+            System.out.print(" g> ");
 
             command=scanner.nextLine().toUpperCase();
             String[] inputs=command.split(" ");
