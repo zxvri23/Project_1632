@@ -9,7 +9,9 @@ public class Room {
     private int roomNumber;
     private int beds;
     private boolean occupied;
-    List<Booking> bookingList=new ArrayList<>();
+    private List<Unavailability> unavailabilityList=new ArrayList<>();
+    private List<Booking> bookingList=new ArrayList<>();
+
 
     public Room(int roomNumber,int beds) {
         this.roomNumber=roomNumber;
@@ -90,6 +92,10 @@ public class Room {
         }
         return rearrange;
 
+    }
+
+    public void addUnavailableRoom(LocalDate from,LocalDate to,String note){
+        unavailabilityList.add(new Unavailability(from,to,note));
     }
 }
 

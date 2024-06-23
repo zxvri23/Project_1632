@@ -202,6 +202,16 @@ public class FileOpenState implements CommandSystemState {
             System.out.println("Please open a file first!");
             return;
         }
+
+        boolean isMarked=hotel.markAsUnavailable(roomNumber,from,to,note);
+        if(isMarked){
+            System.out.println("unavailable "+roomNumber+ " "+
+                    from+" "+ to+ " "+ note);
+        }
+        else{
+            System.out.println("Room number "+roomNumber+" does not exist.");
+        }
+
     }
 
 

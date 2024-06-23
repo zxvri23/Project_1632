@@ -47,5 +47,13 @@ public class Hotel {
         return new ArrayList<>(rooms.values());
     }
 
+    public boolean markAsUnavailable(int number,LocalDate from,LocalDate to,String note){
+        Room room=rooms.get(number);
+        if(room!=null){
+            room.addUnavailableRoom(from,to,note);
+            return true;
+        }
+        return  false;
+    }
 
 }

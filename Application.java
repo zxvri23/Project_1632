@@ -75,7 +75,7 @@ public class Application {
             menu.put(CommandsType.REPORT,new ReportCommand(fileContext,scanner));
             menu.put(CommandsType.FIND,new FindRoomCommand(fileContext,scanner));
             menu.put(CommandsType.FINDIMPORTANT,new FindImportantRoomCommand(fileContext,scanner));
-            menu.put(CommandsType.UNAVAILABLE,new UnavailabilityCommand());
+            menu.put(CommandsType.UNAVAILABILITY,new UnavailabilityCommand(fileContext,scanner));
 
 
 

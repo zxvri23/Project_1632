@@ -15,5 +15,5 @@ public enum CommandsType {
     REPORT,
     FIND,
     FINDIMPORTANT,
-    UNAVAILABLE
+    UNAVAILABILITY
 }
