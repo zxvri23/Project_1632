@@ -76,5 +76,20 @@ public class Room {
         }
         return true;
     }
+
+    public boolean tryToRearrange(LocalDate from,LocalDate to){
+
+        boolean rearrange=false;
+        for(int i=0;i<bookingList.size();i++){
+            Booking booking=bookingList.get(i);
+            if(booking.getFromDate().isBefore(to) && booking.getToDate().isAfter(from)){
+                bookingList.remove(i);
+                rearrange=true;
+                break;
+            }
+        }
+        return rearrange;
+
+    }
 }
 

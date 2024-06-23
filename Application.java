@@ -58,11 +58,6 @@ public class Application {
                 filePath=defaultPath;
             }
 
-            /*LocalDate date=null;
-            if(inputs.length>1){
-                date=LocalDate.parse(inputs[1]);
-            }*/
-
 
 
             menu.put(CommandsType.OPEN,new FileOpenCommand(fileContext,filePath));
@@ -79,7 +74,7 @@ public class Application {
             menu.put(CommandsType.CHECKOUT,new CheckOutCommand(fileContext,scanner));
             menu.put(CommandsType.REPORT,new ReportCommand(fileContext,scanner));
             menu.put(CommandsType.FIND,new FindRoomCommand(fileContext,scanner));
-            menu.put(CommandsType.FINDIMPORTANT,new FindImportantRoomCommand());
+            menu.put(CommandsType.FINDIMPORTANT,new FindImportantRoomCommand(fileContext,scanner));
             menu.put(CommandsType.UNAVAILABLE,new UnavailabilityCommand());
 
 

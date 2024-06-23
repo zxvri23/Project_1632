@@ -1,6 +1,8 @@
 package bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.states;
 
 import bg.tu_varna.sit.a1.f22621632.Project_1632.contracts.CommandSystemState;
+import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Booking;
+import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.BookingManager;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Hotel;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Room;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
@@ -237,6 +239,17 @@ public class FileOpenState implements CommandSystemState {
             System.out.println("Please open a file first!");
             return;
         }
+
+        BookingManager bookingManager=new BookingManager(hotel);
+
+        if(bookingManager.tryToRearrangeAndReserve(beds,from,to)){
+            System.out.println("Emergency booking successfully rearranged.");
+        }
+        else{
+            System.out.println("Unable to rearrange bookings with the current request.");
+        }
+
+
 
     }
 
