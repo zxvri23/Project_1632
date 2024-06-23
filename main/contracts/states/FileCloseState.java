@@ -62,7 +62,7 @@ public class FileCloseState implements CommandSystemState {
     }
 
     @Override
-    public void checkOut() {
+    public void checkOut(int roomNumber) {
         System.out.println("You need to open a file before using this command!");
     }
 

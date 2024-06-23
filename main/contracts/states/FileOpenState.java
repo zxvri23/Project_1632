@@ -2,30 +2,34 @@ package bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.states;
 
 import bg.tu_varna.sit.a1.f22621632.Project_1632.contracts.CommandSystemState;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Booking;
+import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Hotel;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Room;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileWorker;
 
-import java.awt.print.Book;
-import java.io.File;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.Map;
+
 
 public class FileOpenState implements CommandSystemState {
     private Path file;
+    private Hotel hotel;
 
     @Override
     public void open(FileContext file, Path pathFile) {
         try{
-            FileWorker fileHelper=new FileWorker();
+            FileWorker fileWorker=new FileWorker();
             if(Files.notExists(pathFile)){
-                fileHelper.createFile(pathFile);
+                fileWorker.createFile(pathFile);
             }
             this.file=pathFile;
-            String fileRead=fileHelper.read(pathFile);
+            String fileRead=fileWorker.read(pathFile);
+
+            this.hotel=new Hotel();
+
 
             System.out.println("Successfully opened the file,file content: ");
             System.out.println(fileRead);
@@ -96,11 +100,52 @@ public class FileOpenState implements CommandSystemState {
 
     @Override
     public void checkIn(int room, LocalDate fromDate, LocalDate toDate, String note, int guests) {
+        if(hotel==null || file==null){
+            System.out.println("Please open a file first!");
+            return;
+        }
 
+        Room newRoom=hotel.getRoom(room);
+
+        if(newRoom==null){
+            System.out.println("Room number "+room+" does not exist.");
+            return;
+        }
+
+        if(!newRoom.isAvailable(fromDate,toDate)){
+            System.out.println("Room number "+ room+" is not available in those dates.");
+            return;
+        }
+
+        if(guests==-1){
+            guests=newRoom.getBeds();
+        }
+
+        newRoom.book(room,fromDate,toDate,note,guests);
+        System.out.println("Successful check-in: \n"+
+                "checkin "+ room+" "+ fromDate+ " "+toDate+" "+note);
     }
 
     @Override
-    public void checkOut() {
+    public void checkOut(int roomNumber) {
+        if(hotel==null){
+            System.out.println("Hotel data is not loaded");
+            return;
+        }
+
+        Room newRoom=hotel.getRoom(roomNumber);
+        if(newRoom==null){
+            System.out.println("Room number "+roomNumber+ "does not exist.");
+            return;
+        }
+
+        if(!newRoom.isOccupied()){
+            System.out.println("Room number "+ roomNumber+ " is not occupied.");
+            return;
+        }
+
+        newRoom.checkOut();
+        System.out.println("Successful check out for room: "+roomNumber);
 
     }
 

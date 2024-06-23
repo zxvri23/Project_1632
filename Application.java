@@ -5,6 +5,7 @@ import bg.tu_varna.sit.a1.f22621632.Project_1632.enums.CommandsType;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.hotelModules.Hotel;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.defaultCommands.*;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.hotelCommands.*;
+import bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.states.FileCloseState;
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
 
 import java.nio.file.Path;
@@ -26,7 +27,9 @@ public class Application {
         Path defaultPath=Path.of("C:\\Users\\Lenovo\\IdeaProjects\\ООП 1 ПРОЕКТ\\src\\bg\\tu_varna\\sit\\a1\\f22621632\\Project_1632\\");
         Path filePath=defaultPath;
         Map<CommandsType, Command> menu=new HashMap<>();
-        Hotel hotel=new Hotel();
+
+
+        fileContext.setState(new FileCloseState());
 
 
         do{
@@ -65,9 +68,9 @@ public class Application {
 
 
 
-            menu.put(CommandsType.CHECKIN,new CheckInCommand(hotel,scanner));
+            menu.put(CommandsType.CHECKIN,new CheckInCommand(fileContext,scanner));
             menu.put(CommandsType.AVAILABILITY,new AvailabilityCommand());
-            menu.put(CommandsType.CHECKOUT,new CheckOutCommand());
+            menu.put(CommandsType.CHECKOUT,new CheckOutCommand(fileContext,scanner));
             menu.put(CommandsType.REPORT,new ReportCommand());
             menu.put(CommandsType.FIND_ROOM,new FindRoomCommand());
             menu.put(CommandsType.FIND_EMERGENCY_ROOM,new FindImportantRoomCommand());

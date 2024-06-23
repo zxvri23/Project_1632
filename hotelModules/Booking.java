@@ -37,6 +37,10 @@ public class Booking {
         return guests;
     }
 
+    public boolean overlaps(LocalDate from,LocalDate to){
+        return (this.fromDate.isBefore(to) && from.isBefore(this.toDate));
+    }
+
     @Override
     public String toString() {
         return "Booking{" +

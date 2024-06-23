@@ -21,16 +21,5 @@ public class Hotel {
         return rooms.get(roomNumber);
     }
 
-    public void checkIn(int room, LocalDate fromDate, LocalDate toDate, String note, int guests) {
-        Room newRoom=getRoom(room);
-
-        if(newRoom!=null){
-            newRoom.addBooking(new Booking(room,fromDate,toDate,note,guests));
-        }
-        else{
-            System.out.println("Room number "+room+" does not exist.");
-        }
-    }
-
 
 }

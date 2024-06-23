@@ -14,7 +14,7 @@ public interface CommandSystemState {
     void exit();
 
     void checkIn(int room, LocalDate fromDate, LocalDate toDate, String note, int guests);
-    void checkOut();
+    void checkOut(int roomNumber);
     void availability();
     void find();
     void findImportant();
