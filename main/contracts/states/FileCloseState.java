@@ -68,7 +68,7 @@ public class FileCloseState implements CommandSystemState {
 
 
     @Override
-    public void availability() {
+    public void availability(LocalDate date) {
         System.out.println("You need to open a file before using this command!");
     }
 

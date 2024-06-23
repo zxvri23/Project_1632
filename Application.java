@@ -9,6 +9,7 @@ import bg.tu_varna.sit.a1.f22621632.Project_1632.main.contracts.states.FileClose
 import bg.tu_varna.sit.a1.f22621632.Project_1632.main.files.FileContext;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -57,6 +58,11 @@ public class Application {
                 filePath=defaultPath;
             }
 
+            LocalDate date=null;
+            if(inputs.length>1){
+                date=LocalDate.parse(inputs[1]);
+            }
+
 
 
             menu.put(CommandsType.OPEN,new FileOpenCommand(fileContext,filePath));
@@ -69,7 +75,7 @@ public class Application {
 
 
             menu.put(CommandsType.CHECKIN,new CheckInCommand(fileContext,scanner));
-            menu.put(CommandsType.AVAILABILITY,new AvailabilityCommand());
+            menu.put(CommandsType.AVAILABILITY,new AvailabilityCommand(fileContext,date));
             menu.put(CommandsType.CHECKOUT,new CheckOutCommand(fileContext,scanner));
             menu.put(CommandsType.REPORT,new ReportCommand());
             menu.put(CommandsType.FIND_ROOM,new FindRoomCommand());

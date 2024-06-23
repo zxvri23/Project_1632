@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class FileOpenState implements CommandSystemState {
@@ -128,51 +129,98 @@ public class FileOpenState implements CommandSystemState {
 
     @Override
     public void checkOut(int roomNumber) {
-        if(hotel==null){
-            System.out.println("Hotel data is not loaded");
+
+        if(hotel==null || file==null){
+            System.out.println("Please open a file first!");
             return;
         }
-
         Room newRoom=hotel.getRoom(roomNumber);
+
         if(newRoom==null){
             System.out.println("Room number "+roomNumber+ "does not exist.");
             return;
         }
+
+        System.out.println("Before checkout,room "+roomNumber+" is occupied: "+ newRoom.isOccupied());
 
         if(!newRoom.isOccupied()){
             System.out.println("Room number "+ roomNumber+ " is not occupied.");
             return;
         }
 
-        newRoom.checkOut();
+        newRoom.setOccupied(false);
+        System.out.println("After checkout,room "+roomNumber+" is occupied: "+ newRoom.isOccupied());
+
         System.out.println("Successful check out for room: "+roomNumber);
 
     }
 
 
     @Override
-    public void availability() {
+    public void availability(LocalDate date) {
+        if(hotel==null || file==null){
+            System.out.println("Please open a file first!");
+            return;
+        }
+
+        LocalDate current;
+        if(date!=null){
+            current=date;
+        }
+        else {
+            current=LocalDate.now();
+        }
+        List<Room> available=hotel.getAvailableRooms(current,current);
+
+        if(available.isEmpty()){
+            System.out.println("No rooms available on "+current);
+        }
+        else{
+            System.out.println("Available rooms on "+current);
+            for(Room room :available){
+                System.out.println(room.getRoomNumber()+ " and it has beds' counter as: "+room.getBeds());
+            }
+        }
+
 
     }
 
     @Override
     public void unavailability() {
+        if(hotel==null || file==null){
+            System.out.println("Please open a file first!");
+            return;
+        }
 
     }
 
     @Override
     public void find() {
+        if(hotel==null || file==null){
+            System.out.println("Please open a file first!");
+            return;
+        }
+
 
     }
 
     @Override
     public void findImportant() {
+        if(hotel==null || file==null){
+            System.out.println("Please open a file first!");
+            return;
+        }
 
 
     }
 
     @Override
     public void report() {
+        if(hotel==null || file==null){
+            System.out.println("Please open a file first!");
+            return;
+        }
+
 
     }
 }

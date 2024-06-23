@@ -54,6 +54,7 @@ public class Room {
 
     public void checkOut(){
         this.occupied=false;
+        this.bookingList.clear();
     }
 }
 
