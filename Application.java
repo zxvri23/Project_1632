@@ -28,7 +28,7 @@ public class Application {
         Map<CommandsType, Command> menu=new HashMap<>();
 
         fileContext.setState(new FileCloseState());
-        
+
         do{
             System.out.println("\nChoose a command from the once bellow: ");
             System.out.println("-> open file.txt" + "\n-> close" +
@@ -38,7 +38,7 @@ public class Application {
                     "\n-> report" + "\n-> find" +
                     "\n-> find important " + "\n-> unavailability" +
                     "\n-> exit\n");
-            System.out.print(" g> ");
+            System.out.print("> ");
             command=scanner.nextLine().toUpperCase();
             String[] inputs=command.split(" ");
             try{

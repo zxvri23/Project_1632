@@ -120,6 +120,7 @@ public class FileOpenState implements CommandSystemState {
             return;
         }
 
+        //-1 служи като невалидна стойност
         if(guests==-1){
             guests=newRoom.getBeds();
         }
